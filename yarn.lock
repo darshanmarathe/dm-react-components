@@ -13221,6 +13221,11 @@
   "resolved" "https://registry.npmjs.org/q/-/q-1.5.1.tgz"
   "version" "1.5.1"
 
+"qr.js@^0.0.0":
+  "integrity" "sha1-ys6GOG9ZoNuAUPqQ2baw6IoeNk8="
+  "resolved" "https://registry.npmjs.org/qr.js/-/qr.js-0.0.0.tgz"
+  "version" "0.0.0"
+
 "qs@^6.10.0":
   "integrity" "sha512-M528Hph6wsSVOBiYUnGf+K/7w0hNshs/duGsNXPUCLH5XAqjEtiPGwNONLV0tBH8NoGb0mvD5JubnUTrujKDTg=="
   "resolved" "https://registry.npmjs.org/qs/-/qs-6.10.1.tgz"
