@@ -18,3 +18,19 @@
   padding: 0.5em;
   border: 1px solid #ccc;
 }
+
+.table .hilight {
+  background-color: aqua;
+}
+
+.up {
+  content: "\25b2";
+}
+
+.down {
+  content: "\25bc";
+}
+
+.selectable {
+  cursor: pointer;
+}
