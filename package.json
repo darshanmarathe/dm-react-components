@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
     "@zxing/library": "^0.18.6",
     "html5-qrcode": "^2.1.3",
     "qr.js": "^0.0.0",
