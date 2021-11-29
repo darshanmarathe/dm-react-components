@@ -14,19 +14,12 @@ export default class DynaTable extends Component {
   sortTable = (array, sortKey = true) => {
     const sortBy = (p, orderAsc) => {
       return array.slice(0).sort(function (a, b) {
-        let isNum = false;
         if(!isNaN(a[sortKey]) && !isNaN(b[sortKey])) {
-          a = parseFloat(a[p]);
-          b = parseFloat(b[[p]]);
-          isNum = true;
+          a[p] = parseFloat(a[p]);
+          b[p] = parseFloat(b[[p]]);
         }
-        if(isNum) {
-          if (orderAsc) return a > b ? 1 : a < b ? -1 : 0;
-          else return a < b ? 1 : a > b ? -1 : 0;
-        }else{
           if (orderAsc) return a[p] > b[p] ? 1 : a[p] < b[p] ? -1 : 0;
           else return a[p] < b[p] ? 1 : a[p] > b[p] ? -1 : 0;
-        }
       });
     };
     return sortBy(sortKey, this.state.orderAsc);

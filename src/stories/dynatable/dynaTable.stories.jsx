@@ -51,7 +51,7 @@ export default {
 
 export const Basic = () => <DynaTable id="simpleTable" data={data} />;
 export const Sortable = () => <DynaTable data={data} sortable={true} />;
-export const SFDCSortable = () => <DynaTable data={SFDCData} sortable={true} />;
+//export const SFDCSortable = () => <DynaTable data={SFDCData} sortable={true} />;
 
 export const Selectable = () => (
   <DynaTable
