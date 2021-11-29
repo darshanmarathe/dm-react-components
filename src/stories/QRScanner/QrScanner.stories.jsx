@@ -7,8 +7,14 @@ export default {
   component: QrScanner,
 };
 
+
+const log = function(str){
+  console.log(str);
+  alert(str)
+}
+
 export const Basic = () => (
-  <QrScanner onQRDetect={(e) => console.log(e)} id="QRScan" />
+  <QrScanner onQRDetect={(e) => log(e)} id="QRScan" />
 );
 // export const Size = () => (
 //   <QrGen id="QRGen" size="200" value={"http://google.com"} />
