@@ -28,6 +28,9 @@
     - Recaptcha v2 (I am not robot)
     - Speed Dial 
 
+## v0.4.0
+### New Controls
+    = https://github.com/Spope/MiniMasonry.js
 
 # Release History
 ## v0.1.0
