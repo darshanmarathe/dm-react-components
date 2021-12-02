@@ -8,23 +8,37 @@ export default {
 };
 
 const baseObj = {
-    title: "Darshan Marathe",
-    description: "Darshan Marathe is a software engineer at heart.",
-    imgUrl: "https://picsum.photos/id/1/200",
-    flip: false,
+  title: "Darshan Marathe",
+  description: "Darshan Marathe is a software engineer at heart.",
+  imgUrl: "https://picsum.photos/id/1/200",
+  flip: false,
 }
 
-export const Basic = () => <Card id="Card" {...baseObj}  />;
-export const Flipped = () => <Card id="CardF" {...baseObj} imgUrl="https://picsum.photos/id/2/200" flip={true}  />;
-
+export const Basic = () => <Card id="Card" {...baseObj} />;
+export const Flipped = () => <Card id="CardF" {...baseObj} imgUrl="https://picsum.photos/id/2/200" flip={true} />;
+export const FlippedChidren = () => <Card id="CardF" {...baseObj} imgUrl="https://picsum.photos/id/1001/200" flip={true} ><
+     <button style={{
+            border: "none",
+            outline: 0,
+            display: "inline-block",
+            padding: "8px",
+            color: "white",
+            backgroundColor: "#000",
+            textAlign: "center",
+            cursor: "pointer",
+            width: "100%",
+            fontSize: "18px",
+            marginBottom: "10px",
+        }}> Call me</button>
+  </Card>;
 export const Children = () => (
   <Card id="Card" {...baseObj} >
-<div style={{textAlign:'center'}}>
-<a href="#" style={{margin: 10}}><i class="fa fa-dribbble"></i></a>
-  <a href="#" style={{margin: 10}}><i class="fa fa-twitter"></i></a>
-  <a href="#" style={{margin: 10}}><i class="fa fa-linkedin"></i></a>
-  <a href="#" style={{margin: 10}}><i class="fa fa-facebook"></i></a>
-</div>
+    <div style={{ textAlign: 'center' }}>
+      <a href="#" style={{ margin: 10 }}><i class="fa fa-dribbble"></i></a>
+      <a href="#" style={{ margin: 10 }}><i class="fa fa-twitter"></i></a>
+      <a href="#" style={{ margin: 10 }}><i class="fa fa-linkedin"></i></a>
+      <a href="#" style={{ margin: 10 }}><i class="fa fa-facebook"></i></a>
+    </div>
   </Card>
 );
 
