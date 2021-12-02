@@ -15,7 +15,6 @@ const Card = props => {
                 <div className="flip-card-back">
                 <h1>{title}</h1> 
                 {description}
-                {props.children.length}
                 {props.children}
                 </div>
             </div>
