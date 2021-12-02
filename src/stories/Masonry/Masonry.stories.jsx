@@ -7,49 +7,68 @@ import Masonry from "./Masonry";
 import Card from "../Card/Card";
 
 export default {
-  title: "Advanced/Masonry",
-  component: Masonry,
+    title: "Advanced/Masonry",
+    component: Masonry,
 };
 
 // const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 
 const lorem = new LoremIpsum({
-  sentencesPerParagraph: {
-    max: 8,
-    min: 4
-  },
-  wordsPerSentence: {
-    max: 16,
-    min: 4
-  }
+    sentencesPerParagraph: {
+        max: 8,
+        min: 4
+    },
+    wordsPerSentence: {
+        max: 16,
+        min: 4
+    }
 });
 
 
 
 function baseObj(number) {
     const orgNum = number;
-    if(number < 10) number  = 1 + number;
-    return  {
+    if (number < 10) number = 1 + number;
+    return {
         title: "Name " + number,
-        description:  lorem.generateWords(number),
-        imgUrl: `https://picsum.photos/id/${orgNum}/200`,
+        description: lorem.generateWords(number),
+        imgUrl: `https://picsum.photos/id/${orgNum}/100`,
         flip: false,
     }
-    
+
 }
 
 const GetCard = (number) => {
     const Obj = baseObj(number);
-    return <Card id="Card" {...Obj} />
+    return <Card id="Card" {...Obj}>
+        <button className="btnBottm" style={{
+            border: "none",
+            outline: 0,
+            display: "inline-block",
+            padding: "8px",
+            color: "white",
+            backgroundColor: "#000",
+            textAlign: "center",
+            cursor: "pointer",
+            width: "100%",
+            fontSize: "18px",
+            marginBottom: "10px",
+        }}> Call me</button>
+    </Card>
 }
 
 let cards = []
 for (let index = 1; index < 50; index++) {
-    const ran  =index - Math.floor(Math.random(1,50));
-     cards.push(GetCard(ran))
+    const ran = index - Math.floor(Math.random(1, 50));
+    cards.push(GetCard(ran))
 }
 
-export const Basic = () => <Masonry id="Masonry"    basewidth= {250}>
+export const Basic = () => <Masonry id="Masonry" baseWidth={250}>
+    {cards}
+</Masonry>;
+
+
+export const Minified = () => <Masonry id="Masonry" minify={true}>
     {cards}
 </Masonry>;
 

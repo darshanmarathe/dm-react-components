@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-
 import './Card.css'
+
 const Card = props => {
     const { title, description, imgUrl, alt  , flip} = props;
     if(flip) {
@@ -16,6 +15,8 @@ const Card = props => {
                 <div className="flip-card-back">
                 <h1>{title}</h1> 
                 {description}
+                {props.children.length}
+                {props.children}
                 </div>
             </div>
             </div>
@@ -27,6 +28,7 @@ const Card = props => {
             <div className="container">
                 <h4><b>{title}</b></h4>
                 <p>{description}</p>
+                {props.children}
             </div>
         </div>
     )

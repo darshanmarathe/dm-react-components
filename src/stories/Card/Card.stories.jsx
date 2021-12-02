@@ -17,9 +17,16 @@ const baseObj = {
 export const Basic = () => <Card id="Card" {...baseObj}  />;
 export const Flipped = () => <Card id="CardF" {...baseObj} imgUrl="https://picsum.photos/id/2/200" flip={true}  />;
 
-// export const Size = () => (
-//   <Card id="Card" size="200" value={"http://google.com"} />
-// );
+export const Children = () => (
+  <Card id="Card" {...baseObj} >
+<div style={{textAlign:'center'}}>
+<a href="#" style={{margin: 10}}><i class="fa fa-dribbble"></i></a>
+  <a href="#" style={{margin: 10}}><i class="fa fa-twitter"></i></a>
+  <a href="#" style={{margin: 10}}><i class="fa fa-linkedin"></i></a>
+  <a href="#" style={{margin: 10}}><i class="fa fa-facebook"></i></a>
+</div>
+  </Card>
+);
 
 // export const Colorful = () => (
 //   <Card
