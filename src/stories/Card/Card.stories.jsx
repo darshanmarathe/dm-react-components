@@ -15,8 +15,20 @@ const baseObj = {
 }
 
 export const Basic = () => <Card id="Card" {...baseObj} />;
+
+export const WithChildren = () => (
+  <Card id="Card" {...baseObj} >
+    <div style={{ textAlign: 'center' }}>
+      <a href="#" style={{ margin: 10 }}><i class="fa fa-dribbble"></i></a>
+      <a href="#" style={{ margin: 10 }}><i class="fa fa-twitter"></i></a>
+      <a href="#" style={{ margin: 10 }}><i class="fa fa-linkedin"></i></a>
+      <a href="#" style={{ margin: 10 }}><i class="fa fa-facebook"></i></a>
+    </div>
+  </Card>
+);
+
 export const Flipped = () => <Card id="CardF" {...baseObj} imgUrl="https://picsum.photos/id/2/200" flip={true} />;
-export const FlippedChidren = () => <Card id="CardF" {...baseObj} imgUrl="https://picsum.photos/id/1001/200" flip={true} ><
+export const FlippedChidren = () => <Card id="CardF" {...baseObj} imgUrl="https://picsum.photos/id/1001/200" flip={true} >
      <button style={{
             border: "none",
             outline: 0,
@@ -29,19 +41,8 @@ export const FlippedChidren = () => <Card id="CardF" {...baseObj} imgUrl="https:
             width: "100%",
             fontSize: "18px",
             marginBottom: "10px",
-        }}> Call me</button>
+        }}> child component</button>
   </Card>;
-export const Children = () => (
-  <Card id="Card" {...baseObj} >
-    <div style={{ textAlign: 'center' }}>
-      <a href="#" style={{ margin: 10 }}><i class="fa fa-dribbble"></i></a>
-      <a href="#" style={{ margin: 10 }}><i class="fa fa-twitter"></i></a>
-      <a href="#" style={{ margin: 10 }}><i class="fa fa-linkedin"></i></a>
-      <a href="#" style={{ margin: 10 }}><i class="fa fa-facebook"></i></a>
-    </div>
-  </Card>
-);
-
 // export const Colorful = () => (
 //   <Card
 //     id="QRGen"
