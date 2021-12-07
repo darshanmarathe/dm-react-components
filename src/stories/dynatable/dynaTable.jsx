@@ -93,6 +93,7 @@ export default class DynaTable extends Component {
     id: PropTypes.string,
     editable: PropTypes.bool,
     onTableEditFinish: PropTypes.func,
+    headerTemplate: PropTypes.func,
     rowTemplate: PropTypes.func,
     transFormFunc: PropTypes.func,
     onRowSelected: PropTypes.func,
@@ -110,7 +111,7 @@ export default class DynaTable extends Component {
   };
 
   GetTableHeader(prop) {
-    return (
+    return this.props.rowTemplate == null ? (
       <thead>
         {this.props.sortable && (
           <tr>
@@ -135,7 +136,7 @@ export default class DynaTable extends Component {
           </tr>
         )}
       </thead>
-    );
+    ): this.props.headerTemplate(prop , this.props.sortable); ;
   }
 
   RowSelected = (e, rec, rind) => {
