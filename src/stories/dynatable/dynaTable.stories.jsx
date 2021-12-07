@@ -84,5 +84,17 @@ export const rowTemplate = () => (
   />
 );
 
+
+export const headerTemplate = () => (
+  <DynaTable
+    data={data}
+    headerTemplate={(prop, sortable) => (
+      <tr>
+        <td colspan="7" style={{textAlign: "center" , backgroundColor: 'red' , color: 'white' , fontSize: '20px'}}> <b> {Object.keys(prop).join("--|--")} </b> </td>
+      </tr>
+    )}
+  />
+);
+
 // export const Filter = () => <DynaTable data={data} allowFilter={true} />
 // export const SortAndFilter = () => <DynaTable data={data} sortable={true} allowFilter={true} />

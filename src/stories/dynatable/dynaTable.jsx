@@ -111,7 +111,7 @@ export default class DynaTable extends Component {
   };
 
   GetTableHeader(prop) {
-    return this.props.rowTemplate == null ? (
+    return this.props.headerTemplate == null ? (
       <thead>
         {this.props.sortable && (
           <tr>
