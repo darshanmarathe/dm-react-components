@@ -7,7 +7,9 @@ export default function PdfExport({
   element,
   onExported,
   showPdf,
-  orientation,
+  orientation = "landscape",
+  unit = "px",
+  format = "a4",
   height,
   width,
   saveOnExport,
@@ -22,13 +24,13 @@ export default function PdfExport({
 
       new jsPDF();
       var doc = new jsPDF({
-        orientation: orientation || "landscape",
-        unit: "px",
-        format: "a4",
+        orientation: orientation,
+        unit: unit,
+        format: format,
       });
 
       var content = document.querySelector(element);
-
+      alert(window.outerWidth);
       doc.html(content, {
         html2canvas: {
           // insert html2canvas options here, e.g.

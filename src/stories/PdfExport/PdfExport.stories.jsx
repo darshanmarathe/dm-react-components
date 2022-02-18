@@ -4,7 +4,7 @@ import PdfExport from "./PdfExport";
 import "./PdfExport.css";
 import { useState } from "react";
 export default {
-  title: "Example/PdfExport",
+  title: "Advanced/PdfExport",
   component: PdfExport,
 };
 
