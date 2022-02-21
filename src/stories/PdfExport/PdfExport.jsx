@@ -20,9 +20,9 @@ export default function PdfExport({
   const _width = width || "100%";
   useEffect(() => {
     if (enabled) {
-      //window.html2canvas = html2canvas;
+      window.html2canvas = html2canvas;
 
-      new jsPDF();
+     
       var doc = new jsPDF({
         orientation: orientation,
         unit: unit,
