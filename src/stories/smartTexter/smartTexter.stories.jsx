@@ -15,8 +15,9 @@ const obj = {
   "goom" : "Good Morning!!#$",
   "gooa" : "Good Afternoon!!#$",
   "tc" : "Take care!!#$",
+  "bs" : "Be Safe#$",
   "tu" : "Thank you!!#$", 
-  "sfdr" : "Sorry for delayed#$", 
+  "sfdr" : "Sorry for delayed reply#$", 
 }
 
 

@@ -35,12 +35,14 @@ function SmartTexter({ text = "", smarts = {}, showToolBar = false }) {
   return (
     <>
       {showToolBar && (
+        <div className="toolbar">
         <ul>
        
           {Object.keys(smarts).map((smt , ind) => {
-            return <li key={ind}  >{smt} |</li>;
+            return <li key={ind} title={smarts[smt]}  >{smt}</li>;
           })}
         </ul>
+        </div>
       )}
       <textarea ref={textAreaEl}
         onChange={(e) => HandleChange(e)}
@@ -48,12 +50,13 @@ function SmartTexter({ text = "", smarts = {}, showToolBar = false }) {
         placeholder="Type your message here..."
         value={value}
       >
- <code>
+
  {value}
- </code>
       </textarea>
 
-      {value}
+<pre>
+  {value}
+</pre>
     </>
   );
 }
