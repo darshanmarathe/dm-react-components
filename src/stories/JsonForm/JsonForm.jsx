@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css";
-import "https://use.fontawesome.com/releases/v5.6.1/css/all.css";
-import JsonEditor from "https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js";
+
 
 
 export default function JsonForm(props) {
