@@ -76,7 +76,8 @@ export default function JsonForm(props) {
       {
         jsoneditor = new window.JSONEditor(elementRef.current, defaultOptions);
         jsoneditor.on('change' , () => {
-          if(validate())
+          if(validate()
+          )
             props.onChange(jsoneditor.getValue());
         })
       }else{
@@ -86,7 +87,8 @@ export default function JsonForm(props) {
             clearInterval(inter)
             jsoneditor.on('change' , () => {
               
-              if(validate())
+              if(validate()
+              )
                 props.onChange(jsoneditor.getValue());
             })
           }
@@ -100,5 +102,5 @@ export default function JsonForm(props) {
     initJsoneditor();
   }, []);
 
-  return <div className="form_container" ref={elementRef}>JsonForm</div>;
+  return <div  ref={elementRef}>JsonForm</div>;
 }
