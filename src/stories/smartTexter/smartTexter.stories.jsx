@@ -9,7 +9,7 @@ export default {
 
 const obj = {
   '2dy' : 'EE:new Date().toDateString()',
-  'hiii': 'Hi, \n#$\n\nRegards,\n Darshan Marathe',
+  'hiii': 'Hi #$, \n\nRegards,\nDarshan Marathe',
   'hru' : 'How are you?#$',
   "gooe" : "Good evening!!#$",
   "goom" : "Good Morning!!#$",
@@ -17,18 +17,24 @@ const obj = {
   "tc" : "Take care!!#$",
   "bs" : "Be Safe#$",
   "tu" : "Thank you!!#$", 
-  "sfdr" : "Sorry for delayed reply#$", 
+  "sfdr" : "Sorry for delayed reply.\n#$", 
 }
 
 
 export const Basic = () => {
   
-  return <SmartTexter smarts={obj}/>
+  return <SmartTexter smarts={obj} showPreview-={true}/>
 
 }
 
 export const ShowToolBar = () => {
   
   return <SmartTexter showToolBar={true} smarts={obj}/>
+
+}
+
+export const ShowPreview = () => {
+  
+  return <SmartTexter showToolBar={true} showPreview-={true} smarts={obj}/>
 
 }
