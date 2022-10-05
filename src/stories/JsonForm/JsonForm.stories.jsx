@@ -3,11 +3,16 @@ import React from "react";
 import JsonForm from "./JsonForm";
 
 export default {
-  title: "Advance/JsonForm",
+  title: "Advanced/JsonForm",
   component: JsonForm,
 };
 
-var defaultSchema = {
+
+export const Basic = () => {
+
+  console.warn('for documantion visit https://github.com/json-editor/json-editor')
+
+  var defaultSchema = {
     'title': 'Person',
     'type': 'object',
     'required': [
@@ -56,6 +61,11 @@ var defaultSchema = {
       'location': {
         'type': 'object',
         'title': 'Location',
+        'required': [
+'city',
+'state',
+'citystate'
+        ],
         'properties': {
           'city': {
             'type': 'string',
@@ -111,4 +121,7 @@ var defaultSchema = {
     }
   }
 
-export const Basic = () => <JsonForm id="Card" schema={defaultSchema} data={{}} />;
+  return <JsonForm id="Card" schema={defaultSchema} data={{}} onChange={(d) => console.log(d)} />;
+  
+  
+}
