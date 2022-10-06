@@ -65,7 +65,19 @@ export default function JsonForm(props) {
 
     return errors.length === 0;
   }
-  
+  const setUpEditor = () =>{
+    jsoneditor = new window.JSONEditor(elementRef.current, defaultOptions);
+        jsoneditor.on('change' , () => {
+          if(validate())
+            props.onChange(jsoneditor.getValue());
+        })
+        jsoneditor.on('ready', () => {
+          // Now the api methods will be available
+          if (props.enabled === false) {
+            jsoneditor.disable();
+          }
+        });
+  } 
   const initJsoneditor = function () {
     // destroy old JSONEditor instance if exists
     if (jsoneditor) {
@@ -74,23 +86,13 @@ export default function JsonForm(props) {
 
     if(window.JSONEditor)
       {
-        jsoneditor = new window.JSONEditor(elementRef.current, defaultOptions);
-        jsoneditor.on('change' , () => {
-          if(validate()
-          )
-            props.onChange(jsoneditor.getValue());
-        })
+        setUpEditor();
       }else{
         const inter =  setInterval(() => {
           if(window.JSONEditor){
-            jsoneditor = new window.JSONEditor(elementRef.current, defaultOptions);
+            setUpEditor()
             clearInterval(inter)
-            jsoneditor.on('change' , () => {
-              
-              if(validate()
-              )
-                props.onChange(jsoneditor.getValue());
-            })
+            
           }
         }, 1000);
       }
