@@ -104,5 +104,5 @@ export default function JsonForm(props) {
     initJsoneditor();
   }, []);
 
-  return <div  ref={elementRef}>JsonForm</div>;
+  return <div  ref={elementRef}><h2>{props.title}</h2></div>;
 }
