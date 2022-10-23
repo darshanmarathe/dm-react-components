@@ -14,12 +14,12 @@ export default class DynaTable extends Component {
   sortTable = (array, sortKey = true) => {
     const sortBy = (p, orderAsc) => {
       return array.slice(0).sort(function (a, b) {
-        if(!isNaN(a[sortKey]) && !isNaN(b[sortKey])) {
+        if (!isNaN(a[sortKey]) && !isNaN(b[sortKey])) {
           a[p] = parseFloat(a[p]);
           b[p] = parseFloat(b[[p]]);
         }
-          if (orderAsc) return a[p] > b[p] ? 1 : a[p] < b[p] ? -1 : 0;
-          else return a[p] < b[p] ? 1 : a[p] > b[p] ? -1 : 0;
+        if (orderAsc) return a[p] > b[p] ? 1 : a[p] < b[p] ? -1 : 0;
+        else return a[p] < b[p] ? 1 : a[p] > b[p] ? -1 : 0;
       });
     };
     return sortBy(sortKey, this.state.orderAsc);
@@ -34,6 +34,7 @@ export default class DynaTable extends Component {
       this.init();
     });
   };
+  
   toggleOrder = (e) => {
     if (this.state.currentFilter === this.state.prevFilter) {
       this.setState({ orderAsc: !this.state.orderAsc });
@@ -136,7 +137,9 @@ export default class DynaTable extends Component {
           </tr>
         )}
       </thead>
-    ): this.props.headerTemplate(prop , this.props.sortable); ;
+    ) : (
+      this.props.headerTemplate(prop, this.props.sortable)
+    );
   }
 
   RowSelected = (e, rec, rind) => {
