@@ -225,6 +225,7 @@ export default class AutoComplete extends Component {
           type="text"
           ref={this.inp}
           value={this.state.value}
+          autocomplete="off"
           placeholder={this.props.placeholder}
         />
       </div>;
