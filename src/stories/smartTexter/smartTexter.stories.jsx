@@ -2,7 +2,7 @@ import React from "react";
 
 import SmartTexter from "./smartTexter";
 export default {
-  title: "Advanced/SmartTexter",
+  title: "Advanced/SmartTexter (BETA)",
   component: SmartTexter,
 };
 
@@ -16,25 +16,25 @@ const obj = {
   "gooa" : "Good Afternoon!!#$",
   "tc" : "Take care!!#$",
   "bs" : "Be Safe#$",
-  "tu" : "Thank you!!#$", 
-  "sfdr" : "Sorry for delayed reply.\n#$", 
+  "tu" : "Thank you!!#$",
+  "sfdr" : "Sorry for delayed reply.\n#$",
 }
 
 
 export const Basic = () => {
-  
+
   return <SmartTexter smarts={obj} showPreview-={true}/>
 
 }
 
 export const ShowToolBar = () => {
-  
+
   return <SmartTexter showToolBar={true} smarts={obj}/>
 
 }
 
 export const ShowPreview = () => {
-  
+
   return <SmartTexter showToolBar={true} showPreview-={true} smarts={obj}/>
 
 }
