@@ -8,6 +8,7 @@ function SmartTexter({
   smarts = {},
   showToolBar = false,
   showPreview = false,
+  placeholder= "Type your message here..." 
 }) {
   const [value, setValue] = useState(text);
   const [startkey , setStartkey] = useState(0)
@@ -50,13 +51,6 @@ function SmartTexter({
       debugger;
       setValue(checkAndReplace(e.target.value ,val.substring(startkey, end).trim() , start , end ,e));
 
-      // set textarea value to: text before caret + tab + text after caret
-      //this.value = val.substring(startKey, start) + '\t' + val.substring(end);
-
-      // put caret at right position again
-      //this.selectionStart = this.selectionEnd = start + 1;
-
-      // prevent the focus lose
       return false;
 
   }
@@ -95,7 +89,7 @@ function SmartTexter({
         onKeyDown={HandleTab}
         onChange={(e) => HandleChange(e)}
         className="smartTexter"
-        placeholder="Type your message here..."
+        placeholder={placeholder}
         value={value}
         rows="10"
       >
@@ -109,7 +103,7 @@ function SmartTexter({
         onKeyDown={HandleTab}
         onChange={(e) => HandleChange(e)}
         className="smartTexter"
-        placeholder="Type your message here..."
+        placeholder={placeholder}
         value={value}
         rows="15"
       >
