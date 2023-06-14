@@ -3,7 +3,7 @@ import React from "react";
 import QrScanner from "./QrScanner.jsx";
 
 export default {
-  title: "Advanced/QR / Barcode Scanner",
+  title: "Advanced/QR-Barcode Scanner",
   component: QrScanner,
 };
 
