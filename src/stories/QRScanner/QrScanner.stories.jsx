@@ -8,10 +8,11 @@ export default {
 };
 
 
-const log = function(str){
+const log = function(str =""){
   console.log(str);
   alert(str)
-  window.open(str)
+  if(str.includes("://"))
+    window.open(str)
 
 }
 
