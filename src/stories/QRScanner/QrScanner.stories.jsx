@@ -11,6 +11,8 @@ export default {
 const log = function(str){
   console.log(str);
   alert(str)
+  window.open(str)
+
 }
 
 export const Basic = () => (
