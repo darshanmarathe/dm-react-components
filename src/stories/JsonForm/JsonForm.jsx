@@ -2,10 +2,10 @@ import React, { useRef, useEffect } from "react";
 import './JsonForm.css'
 
 
-const useScript = (id , url) => {
+const useScript = (id, url) => {
   useEffect(() => {
     let script = document.getElementById(id);
-    if(!script){
+    if (!script) {
       script = document.createElement('script');
       script.src = url;
       script.id = id
@@ -21,10 +21,10 @@ const useScript = (id , url) => {
 };
 
 
-const useCss = (id , url) => {
+const useCss = (id, url) => {
   useEffect(() => {
     let link = document.getElementById(id);
-    if(!link){
+    if (!link) {
       link = document.createElement('link');
       link.href = url;
       link.id = id;
@@ -47,56 +47,67 @@ export default function JsonForm(props) {
   const defaultOptions = {
     iconlib: "fontawesome5",
     object_layout: "normal",
-    schema: props.schema,
     show_errors: "interaction",
     theme: "bootstrap4",
     startval: props.data || {},
   };
 
-  
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useScript('jsoneditor' ,'//cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js')
-  
-  useCss('fontawesome5','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')
-  useCss('bootstrap4' , 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css' )
 
-  const validate = function(){
+
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useScript('jsoneditor', '//cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js');
+  useCss('fontawesome5', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+  useCss('bootstrap4', '//cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css');
+
+  // if (props.schemaRef == '')
+  // {
+  //   defaultOptions.schema = {
+  //     $ref: props.schemaRef
+  //   }
+  // }else{
+  //   defaultOptions.schema= props.schema;
+  // }
+
+  const validate = function () {
     const errors = jsoneditor.validate();
 
     return errors.length === 0;
   }
-  const setUpEditor = () =>{
+  const setUpEditor = () => {
     jsoneditor = new window.JSONEditor(elementRef.current, defaultOptions);
-        jsoneditor.on('change' , () => {
-          if(validate())
-            props.onChange(jsoneditor.getValue());
-        })
-        jsoneditor.on('ready', () => {
-          // Now the api methods will be available
-          if (props.enabled === false) {
-            jsoneditor.disable();
-          }
-        });
-  } 
+    if (props.exposeEditorAs !== '') {
+			window[props.exposeEditorAs] = jsoneditor;
+		} 
+    jsoneditor.on('change', () => {
+      if (validate())
+        props.onChange(jsoneditor.getValue());
+    })
+    jsoneditor.on('ready', () => {
+      // Now the api methods will be available
+      if (props.enabled === false) {
+        jsoneditor.disable();
+      }
+    });
+  }
   const initJsoneditor = function () {
     // destroy old JSONEditor instance if exists
     if (jsoneditor) {
       jsoneditor.destroy();
     }
 
-    if(window.JSONEditor)
-      {
-        setUpEditor();
-      }else{
-        const inter =  setInterval(() => {
-          if(window.JSONEditor){
-            setUpEditor()
-            clearInterval(inter)
-            
-          }
-        }, 1000);
-      }
-        // new instance of JSONEditor
+    if (window.JSONEditor) {
+      setUpEditor();
+    } else {
+      const inter = setInterval(() => {
+        if (window.JSONEditor) {
+          setUpEditor()
+          clearInterval(inter)
+
+        }
+      }, 1000);
+    }
+    // new instance of JSONEditor
 
     // listen for changes
   };
@@ -104,5 +115,5 @@ export default function JsonForm(props) {
     initJsoneditor();
   }, []);
 
-  return <div  ref={elementRef}><h2>{props.title}</h2></div>;
+  return <div ref={elementRef}><h2>{props.title}</h2></div>;
 }
