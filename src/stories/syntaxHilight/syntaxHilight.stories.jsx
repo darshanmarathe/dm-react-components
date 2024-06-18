@@ -1,17 +1,16 @@
 import React from "react";
 
 import SyntaxHilight from "./syntaxHilight";
+import { languages } from "prismjs";
 
 export default {
   title: "Advanced/Syntax Hilight",
   component: SyntaxHilight,
 };
 
-const baseObj = {
-  language: 'javascript'
-}
 
 const javascriptObject = {
+  language: 'javascript',
   code: `
   function outerFunction() {
     let outerVariable = 'I am outer!';
@@ -32,6 +31,69 @@ const javascriptObject = {
   `
 }
 
-export const Basic = () => <SyntaxHilight  {...baseObj} {...javascriptObject} />;
 
-export const LineNumbers = () => <SyntaxHilight  {...baseObj} {...javascriptObject} lineNumbers={true} />;
+ const htmlObject = {
+  language : 'html',
+  code : `
+    <html>
+      <head>
+        <title> Hello </title>
+      </head>
+      <body>
+        <h1>Hello </h1>
+      </body>
+    </html>`
+ }
+
+
+const goObject  ={
+  code: `package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, 世界")
+}  `,
+language: 'go'
+}
+
+
+const pythonObj = {
+  code :`num = int(input("Enter a number: "))
+if (num % 2) == 0:
+   print("{0} is Even".format(num))
+else:
+   print("{0} is Odd".format(num))`,
+   language: 'py'
+}
+
+
+const csharpObj = {
+  code : `using System;
+
+namespace HelloWorld
+{
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      Console.WriteLine("Hello World!");    
+    }
+  }
+}`,
+language: 'csharp'
+
+}
+export const Basic = () => <SyntaxHilight   {...javascriptObject} />;
+
+export const HTML = () => <SyntaxHilight {...htmlObject} lineNumbers={true} />;
+
+
+export const Golang = () => <SyntaxHilight {...goObject} lineNumbers={true} />;
+
+
+export const Python = () => <SyntaxHilight {...pythonObj} lineNumbers={true} />;
+
+
+
+export const Csharp = () => <SyntaxHilight {...csharpObj} lineNumbers={true} />;
