@@ -1,10 +1,10 @@
 import React from "react";
 
-import SyntaxHilight from "./syntaxHilight";
+import SyntaxHighlight from "./syntaxHighlight";
 
 export default {
-  title: "Advanced/Syntax Hilight",
-  component: SyntaxHilight,
+  title: "Advanced/Syntax Highlight",
+  component: SyntaxHighlight,
 };
 
 
@@ -83,16 +83,16 @@ namespace HelloWorld
   language: 'csharp'
 
 }
-export const Basic = () => <SyntaxHilight   {...javascriptObject} />;
+export const Basic = () => <SyntaxHighlight   {...javascriptObject} />;
 
-export const HTML = () => <SyntaxHilight {...htmlObject} lineNumbers={true} />;
-
-
-export const Golang = () => <SyntaxHilight {...goObject} lineNumbers={true} />;
+export const HTML = () => <SyntaxHighlight {...htmlObject} lineNumbers={true} />;
 
 
-export const Python = () => <SyntaxHilight {...pythonObj} lineNumbers={true} />;
+export const Golang = () => <SyntaxHighlight {...goObject} lineNumbers={true} />;
+
+
+export const Python = () => <SyntaxHighlight {...pythonObj} lineNumbers={true} />;
 
 
 
-export const Csharp = () => <SyntaxHilight {...csharpObj} lineNumbers={true} />;
+export const Csharp = () => <SyntaxHighlight {...csharpObj} lineNumbers={true} />;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import './syntaxHilight.css'
+import './syntaxHighlight.css'
 
 import Prism from 'prismjs';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
@@ -46,7 +46,7 @@ const useCss = (id , url) => {
     }, [url]);
   };
   
-const SyntaxHilight = props => {
+const SyntaxHighlight = props => {
     
     const path = `https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js`
     const line_numberPath = `https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.js`
@@ -80,11 +80,11 @@ const SyntaxHilight = props => {
     )
 }
 
-SyntaxHilight.propTypes = {
+SyntaxHighlight.propTypes = {
     language: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
     lineNumbers: PropTypes.bool
 
 }
 
-export default SyntaxHilight
+export default SyntaxHighlight
