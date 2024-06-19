@@ -2,13 +2,15 @@
 
 ## Home for some complex components
 
-* JSONForm (Low code Form)
+* JSONForm (Low code form builder with validations)
 * Masonry
 * PDFExport
 * Picture Taker
 * QR Generator 
-* QR Scanner 
-* Dynamic Table
+* QR / Barcode Scanner 
+* Dynamic Table (Grid control)
+* Syntax Highlight based in prism.js
+* TextArea (BETA) (snippets for textarea)
 
 
 
