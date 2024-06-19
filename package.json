@@ -67,5 +67,5 @@
     "@storybook/react": "^6.5.10",
     "tablefilter": "^0.7.3"
   },
-  "packageManager": "pnpm@8.14.3+sha1.872b21adeaae4e71acd5c551ba848d927d6aa446"
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }
