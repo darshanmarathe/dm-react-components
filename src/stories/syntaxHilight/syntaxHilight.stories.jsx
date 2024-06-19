@@ -1,7 +1,6 @@
 import React from "react";
 
 import SyntaxHilight from "./syntaxHilight";
-import { languages } from "prismjs";
 
 export default {
   title: "Advanced/Syntax Hilight",
@@ -32,9 +31,9 @@ const javascriptObject = {
 }
 
 
- const htmlObject = {
-  language : 'html',
-  code : `
+const htmlObject = {
+  language: 'html',
+  code: `
     <html>
       <head>
         <title> Hello </title>
@@ -43,10 +42,10 @@ const javascriptObject = {
         <h1>Hello </h1>
       </body>
     </html>`
- }
+}
 
 
-const goObject  ={
+const goObject = {
   code: `package main
 
 import "fmt"
@@ -54,22 +53,22 @@ import "fmt"
 func main() {
 	fmt.Println("Hello, 世界")
 }  `,
-language: 'go'
+  language: 'go'
 }
 
 
 const pythonObj = {
-  code :`num = int(input("Enter a number: "))
+  code: `num = int(input("Enter a number: "))
 if (num % 2) == 0:
    print("{0} is Even".format(num))
 else:
    print("{0} is Odd".format(num))`,
-   language: 'py'
+  language: 'py'
 }
 
 
 const csharpObj = {
-  code : `using System;
+  code: `using System;
 
 namespace HelloWorld
 {
@@ -81,7 +80,7 @@ namespace HelloWorld
     }
   }
 }`,
-language: 'csharp'
+  language: 'csharp'
 
 }
 export const Basic = () => <SyntaxHilight   {...javascriptObject} />;

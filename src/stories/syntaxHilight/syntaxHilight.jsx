@@ -25,24 +25,51 @@ const useScript = (id , url) => {
     }, [url]);
   };
   
+
+  
+const useCss = (id , url) => {
+    useEffect(() => {
+      let link = document.getElementById(id);
+      if(!link){
+        link = document.createElement('link');
+        link.href = url;
+        link.id = id;
+        link.rel = "stylesheet"
+        link.async = false;
+      }
+  
+      document.body.appendChild(link);
+  
+      return () => {
+        document.body.removeChild(link);
+      }
+    }, [url]);
+  };
   
 const SyntaxHilight = props => {
     
     const path = `https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js`
     const line_numberPath = `https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.js`
+ 
+    useCss('linenumbercss' , 'https://prismjs.com/plugins/line-numbers/prism-line-numbers.css')
     useScript('autoloader',path)
     useScript('linenumber',line_numberPath)
-    
+
     useEffect(() => {
         
-
+     
         Prism.highlightAllUnder(document.getElementsByTagName('body')[0]);
         
     
-    })
+    },[])
+
     let className = `language-${props.language}`
+
+    if(props.lineNumbers === true){
+        className += ' line-numbers'
+    }
       return (
-        <div className='line-numbers'>
+        <div>
 
             <label>{props.language}  {className}</label>
             <pre className={className}>
