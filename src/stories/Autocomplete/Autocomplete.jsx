@@ -37,7 +37,6 @@ export default class AutoComplete extends Component {
     keepopen: false,
     mincharAjax: 3,
     url: null,
-    inputClass: '',
     texttemplate: null,
     template: null,
     onSelect: (e) => {},

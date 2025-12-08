@@ -56,6 +56,9 @@ export default {
 
 export const Basic = () => <AutoComplete id="simpleTable" keyprop="id" textprop="superName" records={data} />;
 
+
+export const InputClassName = () => <AutoComplete id="simpleTable" inputClass="big-textbox" keyprop="id" textprop="superName" records={data} />;
+
 export const Template = () => <AutoComplete id="simpleTable" template="{superName} -> {fname} {lname}" keyprop="id" textprop="superName" records={data} />;
 
 
@@ -63,19 +66,22 @@ export const TextTemplate = () => <AutoComplete id="simpleTable" texttemplate="{
 
 
 
-export const AJAX_url = () => <AutoComplete id="simpleTable" url="https://jsonplaceholder.typicode.com/users" 
-textprop="name"
-keyprop="username"
-placeholder="Users"
-template="{username} - {name} <br> {company.name}" />;
+export const AJAX_url = () => <>
+<h1>Try typing cle</h1>
+<AutoComplete id="simpleTable" url="https://jsonplaceholder.typicode.com/users"
+  textprop="name"
+  keyprop="username"
+  placeholder="Users"
+  template="{username} - {name} <br> {company.name}" />;
+</>
 
 
 
 
 
-export const Events = () => <AutoComplete id="simpleTable" url="https://jsonplaceholder.typicode.com/users" 
-textprop="name"
-keyprop="username"
-placeholder="Users"
-onSelect={console.log}
-template="{username} - {name} <br> {company.name}" />;
+export const Events = () => <AutoComplete id="simpleTable" url="https://jsonplaceholder.typicode.com/users"
+  textprop="name"
+  keyprop="username"
+  placeholder="Users"
+  onSelect={console.log}
+  template="{username} - {name} <br> {company.name}" />;

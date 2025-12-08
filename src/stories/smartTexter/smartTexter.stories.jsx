@@ -2,7 +2,7 @@ import React from "react";
 
 import SmartTexter from "./smartTexter";
 export default {
-  title: "Advanced/SmartTexter (BETA)",
+  title: "Advanced/SmartTexter",
   component: SmartTexter,
 };
 
