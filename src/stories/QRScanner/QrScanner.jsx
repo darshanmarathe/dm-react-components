@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import { Html5Qrcode, Html5QrcodeScanner } from "./qrscan";
 
+import "./QrScanner.scss";
+
 export default class QrScanner extends Component {
   static propTypes = {
     onQRDetect: PropTypes.func.isRequired,

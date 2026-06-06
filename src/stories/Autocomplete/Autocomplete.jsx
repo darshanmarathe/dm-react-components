@@ -27,6 +27,7 @@ export default class AutoComplete extends Component {
     texttemplate: PropTypes.string,
     template: PropTypes.string,
     inputClass: PropTypes.string,
+    placeholder: PropTypes.string,
     onSelect: PropTypes.func
   };
 
@@ -40,12 +41,12 @@ export default class AutoComplete extends Component {
     texttemplate: null,
     template: null,
     onSelect: (e) => {},
+    placeholder: 'Search...',
     inputClass: 'textbox'
   };
 
 
   autocomplete(inp, rec) {
-    debugger;
     let arr = rec != null ? rec : this.state.records;
     const that = this;
     /*the autocomplete function takes two arguments,
@@ -56,7 +57,6 @@ export default class AutoComplete extends Component {
 
       //Get Child
       const gc = (key, item) => {
-        debugger;
         let retItem = item;
         const keys = key.split(".");
         for (const _key of keys) {
@@ -93,7 +93,6 @@ export default class AutoComplete extends Component {
         if (that.isLoading === true) return;
         let records = await fetch(that.props.url.replace("=q", `=${val}`));
         records = await records.json()
-        debugger;
         that.isLoading = false;
         arr = records;
       }
@@ -249,14 +248,10 @@ export default class AutoComplete extends Component {
   }
 
 
-  componentDidReceiedProps(attribute, oldValue, attrValue) {
-    if (attribute === "records") {
-      console.log(attrValue);
-      this.setAutoComplete(attrValue);
-     
+  componentDidUpdate(prevProps) {
+    if (this.props.records !== prevProps.records) {
+      this.setAutoComplete(this.props.records);
     }
   }
-
-  
 }
 

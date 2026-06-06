@@ -23,7 +23,7 @@ const obj = {
 
 export const Basic = () => {
 
-  return <SmartTexter placeholder="type hiii and press tab then " smarts={obj} showPreview-={true}/>
+  return <SmartTexter placeholder="type hiii and press tab" smarts={obj} showPreview={true}/>
 
 }
 
@@ -35,6 +35,6 @@ export const ShowToolBar = () => {
 
 export const ShowPreview = () => {
 
-  return <SmartTexter showToolBar={true} showPreview-={true} smarts={obj}/>
+  return <SmartTexter showToolBar={true} showPreview={true} smarts={obj}/>
 
 }

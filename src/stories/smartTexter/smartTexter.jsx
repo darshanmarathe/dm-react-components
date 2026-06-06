@@ -1,118 +1,93 @@
-import React from "react";
-import "./smartTexter.css";
+import { useState, useRef, useEffect } from "react";
 
-import { useState, useRef } from "react";
+import "./smartTexter.css";
 
 function SmartTexter({
   text = "",
   smarts = {},
   showToolBar = false,
   showPreview = false,
-  placeholder= "Type your message here..." 
+  placeholder = "Type your message here...",
 }) {
   const [value, setValue] = useState(text);
-  const [startkey , setStartkey] = useState(0)
+  const [cursorPos, setCursorPos] = useState(null);
   const textAreaEl = useRef(null);
+  const wordStartRef = useRef(0);
 
-  const replaceSubsstring = (str, start, end, strreplace) => {
-    return (
-      str.substring(0, start) + strreplace + str.substring(end, str.length)
-    );
-  }
-
-
-
-  const checkAndReplace = (text , key, start , end, e) => {
-    for (const iterator of Object.keys(smarts)) {
-
-      if(key === iterator){
-        e.preventDefault();
-        let evaluated = smarts[iterator];
-        if (evaluated.startsWith("EE:")) {
-          evaluated = evaluated.replace("EE:", "");
-          evaluated = eval(evaluated);
-          evaluated += "#$";
+  const expandSnippet = (currentText, keyword, start, end) => {
+    for (const key of Object.keys(smarts)) {
+      if (keyword === key) {
+        let snippet = smarts[key];
+        if (snippet.startsWith("EE:")) {
+          snippet = snippet.replace("EE:", "");
+          try {
+            snippet = String(eval(snippet));
+          } catch {
+            snippet = "";
+          }
         }
-
-      text = replaceSubsstring(text , start ,end , evaluated);
+        const cursorIndex = snippet.indexOf("#$");
+        const clean = snippet.replace("#$", "");
+        setCursorPos(cursorIndex > -1 ? start + cursorIndex : start + clean.length);
+        return currentText.substring(0, start) + clean + currentText.substring(end);
       }
     }
-    return text;
+    return currentText;
   };
 
-  const HandleTab = (e) => {
-    if (e.keyCode === 9) { // tab was pressed
-      // get caret position/selection
-      var val = e.target.value,
-          start = startkey,
-          end = e.target.selectionEnd;
-
+  const handleKeyDown = (e) => {
+    if (e.key === "Tab") {
       e.preventDefault();
-      debugger;
-      setValue(checkAndReplace(e.target.value ,val.substring(startkey, end).trim() , start , end ,e));
-
+      const val = e.target.value;
+      const start = wordStartRef.current;
+      const end = e.target.selectionEnd;
+      const keyword = val.substring(start, end).trim();
+      if (keyword) {
+        setValue(expandSnippet(val, keyword, start, end));
+      }
       return false;
+    }
+    if (e.key === " " || e.key === "Enter") {
+      wordStartRef.current = e.target.selectionStart;
+    }
+  };
 
-  }
-  if(e.keyCode === 32 || e.keyCode === 13 ){
-      setStartkey(e.target.selectionStart);
-  }
-  }
-  const HandleChange = (e) => {
+  const handleChange = (e) => {
     setValue(e.target.value);
   };
 
-  React.useEffect(() => {
-    const index = value.indexOf("#$");
-    if (index > -1) {
-      //   setValue(value.replace('#$', ''));
-
-      textAreaEl.current.selectionStart = index;
-      textAreaEl.current.selectionEnd = index + 2;
+  useEffect(() => {
+    if (cursorPos !== null && textAreaEl.current) {
+      textAreaEl.current.focus();
+      textAreaEl.current.selectionStart = cursorPos;
+      textAreaEl.current.selectionEnd = cursorPos;
+      setCursorPos(null);
     }
-  }, [value]);
+  }, [cursorPos]);
+
   return (
     <>
       {showToolBar && (
         <div className="toolbar">
           <ul>
-            {Object.keys(smarts).map((smt, ind) => {
-              return (
-                <li key={ind} title={smarts[smt]}>
-                  {smt}
-                </li>
-              );
-            })}
+            {Object.keys(smarts).map((smt) => (
+              <li key={smt} title={smarts[smt]}>
+                {smt}
+              </li>
+            ))}
           </ul>
-          <textarea
-        ref={textAreaEl}
-        onKeyDown={HandleTab}
-        onChange={(e) => HandleChange(e)}
-        className="smartTexter"
-        placeholder={placeholder}
-        value={value}
-        rows="10"
-      >
-        { value }
-      </textarea>
         </div>
       )}
-      {
-        !showToolBar &&   <textarea
+      <textarea
         ref={textAreaEl}
-        onKeyDown={HandleTab}
-        onChange={(e) => HandleChange(e)}
+        onKeyDown={handleKeyDown}
+        onChange={handleChange}
         className="smartTexter"
         placeholder={placeholder}
         value={value}
-        rows="15"
-      >
-        { value }
-      </textarea>
-      }
-
-      {showPreview === true &&
-      <pre>{value}</pre>}
+        rows={showToolBar ? 10 : 15}
+      />
+      {showPreview && <pre className="smartTexter-preview">{value}</pre>}
     </>
   );
 }
